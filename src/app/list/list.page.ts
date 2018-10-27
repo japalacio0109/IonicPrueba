@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Documento } from '../models/documento'
+import { DocumentoService } from '../documento.service';
 
 @Component({
   selector: 'app-list',
@@ -6,34 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['list.page.scss']
 })
 export class ListPage implements OnInit {
+
+  @Input() documentos: Documento[];
   private selectedItem: any;
-  private icons = [
-    'flask',
-    'wifi',
-    'beer',
-    'football',
-    'basketball',
-    'paper-plane',
-    'american-football',
-    'boat',
-    'bluetooth',
-    'build'
-  ];
-  public items: Array<{ title: string; note: string; icon: string }> = [];
-  constructor() {
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+
+  constructor(private documentoService: DocumentoService) {
+
   }
 
   ngOnInit() {
+    this.getDocumentos();
   }
   // add back when alpha.4 is out
   // navigate(item) {
   //   this.router.navigate(['/list', JSON.stringify(item)]);
   // }
+
+  getDocumentos(): void {
+    this.documentoService.getDocumentos()
+    .subscribe(documentos => {
+      this.documentos = documentos;
+    });
+  }
 }

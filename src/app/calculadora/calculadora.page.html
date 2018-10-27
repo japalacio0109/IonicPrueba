@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Calculadora
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div style="text-align:left; float: center;">
+  <!-- Trace temporal de validación -->
+    Valor Completo: {{calculadora.completo}}<br>
+    Valor numero: {{calculadora.numero}}<br>
+    Valor resultado: {{calculadora.resultado}}<br>
+    Valor operacion: {{calculadora.operacion}}<br>
+
+    <ion-grid>
+    <ion-row>
+      <ion-col size="10">
+        <ion-item>
+          <ion-input [(ngModel)]="calculadora.numero" required type="text" placeholder="Ingrese Número"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="2">
+        <ion-button expand="full" color="default" (click)="setNumero(1)" fill="outline">1</ion-button>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button expand="full" color="default" (click)="setNumero(2)" fill="outline">2</ion-button>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button expand="full" color="default" (click)="setNumero(3)" fill="outline">3</ion-button>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button expand="full" (click)="setClearAll()" color="light">CE</ion-button>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button expand="full" color="light" (click)="setClear()">C</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="2">
+        <ion-button expand="full" color="default" (click)="setNumero(4)" fill="outline">4</ion-button>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button expand="full" color="default" (click)="setNumero(5)" fill="outline">5</ion-button>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button expand="full" color="default" (click)="setNumero(6)" fill="outline">6</ion-button>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button expand="full" color="light" (click)="setOperacion('*')">*</ion-button>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button expand="full" color="light" (click)="setOperacion('/')">/</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="2">
+        <ion-button expand="full" color="default" (click)="setNumero(7)" fill="outline">7</ion-button>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button expand="full" color="default" (click)="setNumero(8)" fill="outline">8</ion-button>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button expand="full" color="default" (click)="setNumero(9)" fill="outline">9</ion-button>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button expand="full" color="light" (click)="setOperacion('+')">+</ion-button>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button expand="full" color="light" (click)="setOperacion('-')">-</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-button expand="full" color="default" (click)="setNumero(0)" fill="outline">0</ion-button>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button expand="full" color="light" (click)="setOperacion('=')">=</ion-button>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button expand="full" color="light" (click)="setOperacion('.')">.</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  </div>
+</ion-content>
